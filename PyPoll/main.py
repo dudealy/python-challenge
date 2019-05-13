@@ -2,6 +2,7 @@ import os
 import csv
 csvpath=os.path.join('.', 'Resources', 'election_data.csv')
 
+
 total_votes=0
 
 with open(csvpath, newline='') as csvfile:
@@ -33,6 +34,11 @@ with open(csvpath, newline='') as csvfile:
     Percentage2 = (len(candidate_votes2)/total_votes)*100
     Percentage3 = (len(candidate_votes3)/total_votes)*100
     Percentage4 = (len(candidate_votes4)/total_votes)*100
+   
+    final_vote_all_counter=[len(candidate_votes), len(candidate_votes2), len(candidate_votes3), len(candidate_votes4)]
+    final_percentage_all=[Percentage1, Percentage2, Percentage3, Percentage4]
+    final_list = list(zip(candidate_list, final_vote_all_counter, final_percentage_all))
+
     print("Election Results")
     print("----------------------------")
     print("Total Votes: " +str(total_votes))
@@ -47,6 +53,5 @@ with open(csvpath, newline='') as csvfile:
             print(candidate + ": " + str(Percentage3) +" " + "("+ str(len(candidate_votes3)) +")")
         if candidate == "O'Tooley":
             print(candidate + ": " + str(Percentage4) +" " + "("+ str(len(candidate_votes4)) +")")
-    print("Winner: " + "Candidate with the most votes")
+    print("Winner: " + str(final_list[0]))
     print("----------------------------")
-    
