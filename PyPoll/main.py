@@ -10,7 +10,9 @@ with open(csvpath, newline='') as csvfile:
 
     candidate_list=[]
     candidate_votes=[]
-    vote_counter=0
+    candidate_votes2=[]
+    candidate_votes3=[]
+    candidate_votes4=[]
 
     for row in csvreader:
         voter_id=str(row[0])
@@ -19,31 +21,32 @@ with open(csvpath, newline='') as csvfile:
         total_votes+=1
         if candidate not in candidate_list:
             candidate_list.append(candidate)
-          
-
-            # for candidate in csvreader:
-            #     if candidate=="Khan":
-            #         candidate_votes.append("Khan")
-            #         print(len(candidate_votes))
-            #         return total_votes  
-
-
-        
-   
-
-
-
-        
+        if candidate == "Khan":
+            candidate_votes.append(row[2])
+        if candidate == "Correy":
+            candidate_votes2.append(row[2])
+        if candidate == "Li":
+            candidate_votes3.append(row[2])
+        if candidate == "O'Tooley":
+            candidate_votes4.append(row[2])
+    Percentage1 = (len(candidate_votes)/total_votes)*100
+    Percentage2 = (len(candidate_votes2)/total_votes)*100
+    Percentage3 = (len(candidate_votes3)/total_votes)*100
+    Percentage4 = (len(candidate_votes4)/total_votes)*100
     print("Election Results")
     print("----------------------------")
     print("Total Votes: " +str(total_votes))
     print("----------------------------")
     
-    
     for candidate in candidate_list:
-            print(candidate + ": " + "Percentage " + str(len(candidate_votes)))
-    
-    print("----------------------------")
+        if candidate =="Khan":
+            print(candidate + ": " + str(Percentage1) +" " + "("+ str(len(candidate_votes)) +")")
+        if candidate == "Correy":
+            print(candidate + ": " + str(Percentage2) +" " + "("+ str(len(candidate_votes2)) +")")
+        if candidate == "Li":
+            print(candidate + ": " + str(Percentage3) +" " + "("+ str(len(candidate_votes3)) +")")
+        if candidate == "O'Tooley":
+            print(candidate + ": " + str(Percentage4) +" " + "("+ str(len(candidate_votes4)) +")")
     print("Winner: " + "Candidate with the most votes")
     print("----------------------------")
     
